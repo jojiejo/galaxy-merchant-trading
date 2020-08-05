@@ -64,3 +64,20 @@ glob prok Gold is 57800 Credits
 glob prok Iron is 782 Credits
 I have no idea what you are talking about
 ```
+
+## Solution
+
+### Flow Chart
+
+
+### System Requirement
+Best performance in Go 1.13
+
+### How to Setup
+<ol>
+<li>Download or Git Clone the repository using :
+```
+git clone https://github.com/jojiejo/galaxy-merchant-trading.git
+```
+</li> 
+</ol>
