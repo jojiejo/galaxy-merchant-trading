@@ -1,5 +1,8 @@
-package converter
+package pkg
 
+import "fmt"
+
+//MapRomanToArabicNumeral => Map Containing Roman Numeral to Arabic Numeral
 var MapRomanToArabicNumeral = make(map[string]int)
 
 func init() {
@@ -14,6 +17,7 @@ func init() {
 	}
 }
 
+//ConvertRomanToArabic => Convert Roman Numeral to Arabic Numeral
 func ConvertRomanToArabic(romanNumeral string) int {
 	arabicNumeral := 0
 	lnRomanNumeral := len(romanNumeral)
@@ -41,4 +45,27 @@ func ConvertRomanToArabic(romanNumeral string) int {
 	}
 
 	return arabicNumeral
+}
+
+//ConvertInterGalacticToRoman => Convert Inter Galactic Numeral to Roman Numeral
+func ConvertInterGalacticToRoman(firstChar int, lastChar int, splitItem []string, intergalacticToRomanNumeral map[string]string) (string, string) {
+	stringContainer := ""
+	romanNumeral := ""
+
+	for i := firstChar; i < lastChar; i++ {
+		//Check the string is valid intergalactic numerals
+		_, doesStringExistInIntergalacticNumerals := intergalacticToRomanNumeral[splitItem[i]]
+
+		if doesStringExistInIntergalacticNumerals {
+			stringContainer += splitItem[i] + " "
+			romanNumeral += intergalacticToRomanNumeral[splitItem[i]]
+		} else {
+			fmt.Println("One of intergalactic numerals is unidentified.")
+			stringContainer = ""
+			romanNumeral = ""
+			break
+		}
+	}
+
+	return stringContainer, romanNumeral
 }
