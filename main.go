@@ -27,7 +27,7 @@ func main() {
 
 	//Start printing the output
 	fmt.Println("-----------------")
-	fmt.Println("Expecting Output")
+	fmt.Println("Output")
 	fmt.Println("-----------------")
 
 	//Save the value of intergalactic numeral declaration
