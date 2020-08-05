@@ -75,13 +75,13 @@ Best performance in Go 1.13
 
 ### How to Setup ###
 <ul>
-<li>Download or Git Clone the repository using :</li>
+<li>Download or Git Clone the repository</li>
 </ul>
 ```Download or Git Clone
 $ git clone https://github.com/jojiejo/galaxy-merchant-trading.git
 ```
 <ul>
-<li>Run the source code using :</li>
+<li>Run the source code</li>
 </ul>
 ```Run the source code
 $ cd galaxy-merchant-trading
@@ -89,7 +89,7 @@ $ go mod tidy
 $ go run main.go
 ```
 <ul>
-<li>Or you can build the source code, using : (Then execute main.exe after successfully builded)</li>
+<li>Or you can build the source code (Then execute main.exe after successfully builded)</li>
 </ul>
 ```Build the source code
 $ cd galaxy-merchant-trading
