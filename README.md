@@ -1,7 +1,7 @@
-# galaxy-merchant-trading
+# galaxy-merchant-trading #
 An application to convert intergalactic numerals to become understandable
 
-## Problem Description
+## Problem Description ##
 You decided to give up on earth after the latest financial collapse left 99.99% of the earth's
 population with 0.01% of the wealth. Luckily, with the scant sum of money that is left in your
 account, you are able to afford to rent a spaceship, leave earth, and fly all over the galaxy to sell
@@ -40,7 +40,7 @@ A number written in Arabic numerals can be broken into digits. For example, 1903
 In the above example, 1,000 = M, 900 = CM, and 3 = III. Therefore, 1903 = MCMIII.
 Source: Wikipedia (http://en.wikipedia.org/wiki/Roman_numerals)
 
-### Test Input
+### Test Input ###
 ```
 glob is I
 prok is V
@@ -56,7 +56,7 @@ how many Credits is glob prok Iron ?
 how much wood could a woodchuck chuck if a woodchuck could chuck wood ? 
 ```
 
-### Expecting Output
+### Expecting Output ###
 ```
 pish tegj glob glob is 42
 glob prok Silver is 68 Credits
@@ -65,34 +65,34 @@ glob prok Iron is 782 Credits
 I have no idea what you are talking about
 ```
 
-## Solution
+## Solution ##
 
-### Flow Chart
+### Flow Chart ###
 
 
-### System Requirement
+### System Requirement ###
 Best performance in Go 1.13
 
-### How to Setup
+### How to Setup ###
 <ul>
 <li>Download or Git Clone the repository using :</li>
 </ul>
 ```Download or Git Clone
-git clone https://github.com/jojiejo/galaxy-merchant-trading.git
+$ git clone https://github.com/jojiejo/galaxy-merchant-trading.git
 ```
 <ul>
 <li>Run the source code using :</li>
 </ul>
 ```Run the source code
-cd galaxy-merchant-trading
-go mod tidy
-go run main.go
+$ cd galaxy-merchant-trading
+$ go mod tidy
+$ go run main.go
 ```
 <ul>
 <li>Or you can build the source code, using : (Then execute main.exe after successfully builded)</li>
 </ul>
 ```Build the source code
-cd galaxy-merchant-trading
-go mod tidy
-go build main.go
+$ cd galaxy-merchant-trading
+$ go mod tidy
+$ go build main.go
 ```
