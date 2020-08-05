@@ -11,14 +11,14 @@ numbers used for intergalactic transactions follows similar convention to the ro
 you have painstakingly collected the appropriate translation between them. Roman numerals are
 based on seven symbols: 
 
-Symbol Value
-I 1
-V 5
-X 10
-L 50
-C 100
-D 500
-M 1,000
+Symbol Value<br/>
+I 1<br/>
+V 5<br/>
+X 10<br/>
+L 50<br/>
+C 100<br/>
+D 500<br/>
+M 1,000<br/>
 
 Numbers are formed by combining symbols together and adding the values. For example, MMVI is
 1000 + 1000 + 5 + 1 = 2006. Generally, symbols are placed in order of value, starting with the
@@ -40,7 +40,8 @@ A number written in Arabic numerals can be broken into digits. For example, 1903
 In the above example, 1,000 = M, 900 = CM, and 3 = III. Therefore, 1903 = MCMIII.
 Source: Wikipedia (http://en.wikipedia.org/wiki/Roman_numerals)
 
-```Test Input
+### Test Input
+```
 glob is I
 prok is V
 pish is X
@@ -55,7 +56,8 @@ how many Credits is glob prok Iron ?
 how much wood could a woodchuck chuck if a woodchuck could chuck wood ? 
 ```
 
-```Expecting Output
+### Expecting Output
+```
 pish tegj glob glob is 42
 glob prok Silver is 68 Credits
 glob prok Gold is 57800 Credits
