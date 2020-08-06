@@ -68,7 +68,7 @@ I have no idea what you are talking about
 ## Solution ##
 
 ### Flow Chart ###
-
+![Repo List](docs/flow-chart.png)
 
 ### System Requirement ###
 Best performance in Go 1.13
