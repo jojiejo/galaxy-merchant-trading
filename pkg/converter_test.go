@@ -41,8 +41,16 @@ func TestConvertRomanToArabic(t *testing.T) {
 		t.Logf("ConvertRomanToArabic() success, expected %v, got %v", 39, result)
 	}
 
-	//Negative Case for Consecutive Chars
+	//Negative Case for 3 Consecutive Chars
 	result, err = ConvertRomanToArabic("IIIX")
+	if err != nil {
+		t.Logf("ConvertRomanToArabic() success, got %v", err)
+	} else {
+		t.Errorf("ConvertRomanToArabic() failed, got %v", err)
+	}
+
+	//Negative Case for 2 Consecutive Chars
+	result, err = ConvertRomanToArabic("IIX")
 	if err != nil {
 		t.Logf("ConvertRomanToArabic() success, got %v", err)
 	} else {

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"strings"
 
 	"github.com/jojiejo/galaxy-merchant-trading/pkg"
 )
@@ -20,7 +19,7 @@ func main() {
 	stringifiedContent := string(inputContent)
 
 	//Split converted string
-	splitStringifiedContent := strings.Split(stringifiedContent, "\r")
+	splitStringifiedContent := pkg.SplitLines(stringifiedContent)
 
 	//Process input string
 	processedString, err := pkg.ProcessIntergalacticStatement(splitStringifiedContent)
