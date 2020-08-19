@@ -96,7 +96,7 @@ func ConvertInterGalacticToRoman(firstChar int, lastChar int, splitItem []string
 		_, doesStringExistInIntergalacticNumerals := intergalacticToRomanNumeral[splitItem[i]]
 
 		if !doesStringExistInIntergalacticNumerals {
-			err = errors.New("One of intergalactic numerals is unidentified")
+			err = errors.New("Requested number is in invalid format")
 			stringContainer = ""
 			romanNumeral = ""
 			break

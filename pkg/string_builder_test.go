@@ -1,6 +1,8 @@
 package pkg
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestProcessIntergalacticStatement(t *testing.T) {
 	var result []string
@@ -140,6 +142,23 @@ func TestProcessIntergalacticStatement(t *testing.T) {
 		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
 	}
 
+	//Is xxx larger than xxx ? [Negative Case]
+	stringArgument = make([]string, 8)
+	stringArgument[0] = "glob is I"
+	stringArgument[1] = "prok is V"
+	stringArgument[2] = "pish is X"
+	stringArgument[3] = "tegj is L"
+	stringArgument[4] = "glob glob Silver is 34 Credits"
+	stringArgument[5] = "glob prok Gold is 57800 Credits"
+	stringArgument[6] = "pish pish Iron is 3910 Credits"
+	stringArgument[7] = "Is pish pish larger than pash pash ?"
+	result, err = ProcessIntergalacticStatement(stringArgument)
+	if result[0] != "Requested number is in invalid format" {
+		t.Errorf("ProcessIntergalacticStatement() failed, got %v", result[0])
+	} else {
+		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
+	}
+
 	//Does xxx xxx has more Credits than xxx xxx ? [Larger Case]
 	stringArgument = make([]string, 8)
 	stringArgument[0] = "glob is I"
@@ -174,7 +193,7 @@ func TestProcessIntergalacticStatement(t *testing.T) {
 		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
 	}
 
-	//Does xxx xxx has more Credits than xxx xxx ? [Negative Case]
+	//Does xxx xxx has more Credits than xxx xxx ? [Negative Case First Numeral]
 	stringArgument = make([]string, 8)
 	stringArgument[0] = "glob is I"
 	stringArgument[1] = "prok is V"
@@ -183,9 +202,43 @@ func TestProcessIntergalacticStatement(t *testing.T) {
 	stringArgument[4] = "glob glob Silver is 34 Credits"
 	stringArgument[5] = "glob prok Gold is 57800 Credits"
 	stringArgument[6] = "pish pish Iron is 3910 Credits"
-	stringArgument[7] = "Does glab glab Gold has more Credits than pish tegj glab glab Iron ?"
+	stringArgument[7] = "Does glab glab Gold has more Credits than pish tegj glob glob Iron ?"
 	result, err = ProcessIntergalacticStatement(stringArgument)
 	if result[0] != "Requested number is in invalid format" {
+		t.Errorf("ProcessIntergalacticStatement() failed, got %v", result[0])
+	} else {
+		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
+	}
+
+	//Does xxx xxx has more Credits than xxx xxx ? [Negative Case Second Numeral]
+	stringArgument = make([]string, 8)
+	stringArgument[0] = "glob is I"
+	stringArgument[1] = "prok is V"
+	stringArgument[2] = "pish is X"
+	stringArgument[3] = "tegj is L"
+	stringArgument[4] = "glob glob Silver is 34 Credits"
+	stringArgument[5] = "glob prok Gold is 57800 Credits"
+	stringArgument[6] = "pish pish Iron is 3910 Credits"
+	stringArgument[7] = "Does glob glob Gold has more Credits than pish tegj glab glab Iron ?"
+	result, err = ProcessIntergalacticStatement(stringArgument)
+	if result[0] != "Requested number is in invalid format" {
+		t.Errorf("ProcessIntergalacticStatement() failed, got %v", result[0])
+	} else {
+		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
+	}
+
+	//Does xxx xxx has more Credits than xxx xxx ? [Negative Case Material]
+	stringArgument = make([]string, 8)
+	stringArgument[0] = "glob is I"
+	stringArgument[1] = "prok is V"
+	stringArgument[2] = "pish is X"
+	stringArgument[3] = "tegj is L"
+	stringArgument[4] = "glob glob Silver is 34 Credits"
+	stringArgument[5] = "glob prok Gold is 57800 Credits"
+	stringArgument[6] = "pish pish Iron is 3910 Credits"
+	stringArgument[7] = "Does glob glob Platinum has more Credits than pish tegj glob glob Iron ?"
+	result, err = ProcessIntergalacticStatement(stringArgument)
+	if result[0] != "Material Platinum is unidentified" {
 		t.Errorf("ProcessIntergalacticStatement() failed, got %v", result[0])
 	} else {
 		t.Logf("ProcessIntergalacticStatement() success, got %v", result[0])
@@ -193,10 +246,25 @@ func TestProcessIntergalacticStatement(t *testing.T) {
 }
 
 func TestCheckWordInSentence(t *testing.T) {
-	//var result int
+	var result int
 	var err error
 	var sentence = make([]string, 15)
 	var word string
+
+	sentence = make([]string, 6)
+	sentence[0] = "pish"
+	sentence[1] = "pish"
+	sentence[2] = "Iron"
+	sentence[3] = "is"
+	sentence[4] = "3910"
+	sentence[5] = "Credits"
+	word = "is"
+	result, err = CheckWordIndexInSentence(sentence, word)
+	if result == 3 {
+		t.Logf("CheckWordInSentence() success, expected %v, got %v", 3, result)
+	} else {
+		t.Errorf("CheckWordInSentence() failed, expected %v, got %v", 3, result)
+	}
 
 	//Negative Case
 	sentence = make([]string, 6)
@@ -212,5 +280,31 @@ func TestCheckWordInSentence(t *testing.T) {
 		t.Logf("CheckWordInSentence() success, got %v", err)
 	} else {
 		t.Errorf("CheckWordInSentence() failed, got %v", err)
+	}
+}
+
+func TestSplitLines(t *testing.T) {
+	content := `glob is I  
+	prok is V  
+	pish is X  
+	tegj is L  
+	glob glob Silver is 34 Credits  
+	glob prok Gold is 57800 Credits  
+	pish pish Iron is 3910 Credits  
+	how much is pish tegj glob glob ?  
+	how many Credits is glob prok Silver ?  
+	how many Credits is glob glob Gold ?  
+	how many Credits is glob glob glob glob glob glob Gold ?  
+	how many Credits is pish tegj glob Iron ?
+	Does pish tegj glob glob Iron has more Credits than glob glob Gold ?
+	Is glob prok larger than pish pish ?
+	how much wood could a woodchuck chuck if a woodchuck could chuck wood ?`
+
+	result := SplitLines(content)
+	resultLength := len(result)
+	if resultLength == 15 {
+		t.Logf("SplitLines() success, expected %v, got %v", 15, resultLength)
+	} else {
+		t.Errorf("SplitLines() failed, expected %v, got %v", 15, resultLength)
 	}
 }

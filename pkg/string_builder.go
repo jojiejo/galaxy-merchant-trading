@@ -54,15 +54,10 @@ func ProcessIntergalacticStatement(splitStringifiedContent []string) ([]string, 
 
 			if isIndex != 0 && creditsIndex != 0 {
 				//Form a roman numeral
-				romanNumeral := ""
-				for i := 0; i < isIndex-1; i++ {
-					//Check the string is valid intergalactic numerals
-					if _, doesStringExistInIntergalacticNumerals := intergalacticToRomanNumeral[splitItem[i]]; doesStringExistInIntergalacticNumerals == false {
-						returnedString = append(returnedString, "Requested number is in invalid format")
-						continue
-					}
-
-					romanNumeral += intergalacticToRomanNumeral[splitItem[i]]
+				_, arabicNumeral, err := ConvertInterGalacticToArabic(0, isIndex-1, splitItem, intergalacticToRomanNumeral)
+				if err != nil {
+					returnedString = append(returnedString, err.Error())
+					continue
 				}
 
 				//Form the name of material
@@ -75,12 +70,6 @@ func ProcessIntergalacticStatement(splitStringifiedContent []string) ([]string, 
 				}
 
 				//Calculation of material worth
-				arabicNumeral, err := ConvertRomanToArabic(romanNumeral)
-				if err != nil {
-					returnedString = append(returnedString, "Requested number is in invalid format")
-					continue
-				}
-
 				materialWorthValue := creditsValue / float64(arabicNumeral)
 				materialWorth[materialName] = materialWorthValue
 			}
